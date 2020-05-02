@@ -14,16 +14,17 @@ function removeFromRoom(roomName, playerName, sid) {
 
 };
 function joinRoom(playerName, rName, socket) {
-    if (count <= [rName.length - 1] && socketConnections[rName]) {
+    // var {playerOne, playerTwo} = socketConnections[rName]; 
+    if (count <= [rName.length - 1] && socketConnections[rName] && (socketConnections[rName].playerOne==null || socketConnections[rName].playerTwo == null)) {
 
 
         socket.join(rName);
         socketConnections[rName].playerTwo = playerName;
         socketConnections[rName].playerTwoSid = socket.id;
 
-        var { playerOne, playerTwo, turn } = socketConnections[rName];
-
-        io.in(rName).emit('roomJoined', { rName, playerOne, playerTwo, turn });
+        var { playerOne, playerTwo, turn, boardConfig } = socketConnections[rName];
+        
+        io.in(rName).emit('roomJoined', { rName, playerOne, playerTwo, turn, board: boardConfig });
     } else {
         socket.emit('err', 'Error while joining the room.');
     }
@@ -77,7 +78,8 @@ function createRoom(name, socket) {
     playerName = name;
     socketConnections[rName] = newConnection;
     socket.join(rName);
-    io.in(rName).emit('roomJoined', { rName, playerOne: newConnection.playerOne, playerTwo: newConnection.playerTwo, turn: newConnection.turn });
+    var board = socketConnections[rName].boardConfig; 
+    io.in(rName).emit('roomJoined', { rName, board, playerOne: newConnection.playerOne, playerTwo: newConnection.playerTwo, turn: newConnection.turn });
     return rName;
 }
 

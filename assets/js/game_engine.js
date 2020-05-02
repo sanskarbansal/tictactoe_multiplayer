@@ -31,7 +31,9 @@ function joinRoom(name, rName) {
 }
 
 socket.on('roomJoined', (data) => {
-    var { rName, playerOne, playerTwo } = data;
+    var { rName, playerOne, playerTwo, board } = data;
+    console.log(data); 
+    setupBoard(board); 
     roomName = rName;
     turn = data.turn;
     if (playerOne != null) {
