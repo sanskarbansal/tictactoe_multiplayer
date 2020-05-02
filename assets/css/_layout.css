@@ -1,0 +1,92 @@
+.container{
+    display: flex; 
+    align-items: center;
+    flex-direction: column;
+    width: 80%; 
+    margin: 0 auto; 
+    border-radius: 4px;
+    padding: 2em 0; 
+    box-shadow: 0 0 3px 0px black;
+}
+.d-none{
+    display: none !important; 
+}
+.form{
+    box-shadow: 0 0 1.5px 0 blue;
+    border-radius: 4px;
+    padding: 0em 2em 2em 2em; 
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+}
+.form-label{
+    display: block;
+    color: grey; 
+    font-family: monospace;
+    font-size: 1.2em; 
+    margin: 2em 0 0.5em  0; 
+}
+.form-label + input{
+    padding: 0.5em 0.3em; 
+    display: block;
+    border: none; 
+    box-shadow: 0 0 1px 0 black;
+    font-size: 1.3em; 
+    font-family: monospace;
+    border-radius: 4px;
+}
+.form button{
+    background-color: rgb(56, 206, 56); 
+    margin-top: 1em;  
+    color: white; 
+    border: none; 
+    font-size: 2em;
+    font-weight: bolder;
+    text-align: center; 
+    padding: 0.2em 1em ;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn{
+    padding: 0.2em; 
+    border: none; 
+    border-radius: 4px;
+    font-size: 1.2em;
+    font-family: monospace;
+    font-weight: bolder;
+    background-color: blueviolet;
+    color: white; 
+    cursor: pointer;
+}
+
+
+#gameBoard{
+    display: grid; 
+    height: 700px; 
+    width: 500px; 
+    grid-template-rows: 200px repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    margin: 0 auto; 
+}
+.cell{
+    border: 1px solid black; 
+}
+#player-details-container{
+    grid-column: 1/4;
+}
+#player-details-container h1{
+    text-align: center;
+}
+
+.cell{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 7em;
+}
+}
+.cell:hover{
+    background-color: rgba(0, 0, 0, 0.231);
+}
