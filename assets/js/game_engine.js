@@ -52,6 +52,8 @@ socket.on('draw', (data) => {
     // setTimeout(resetBoard, 1000);
 
 });
+
+socket.on('notready', d=>alert(d) ); 
 function setupBoard(board) {
     for (let i = 0; i < board.length; i++) {
         if (board[i] != null) {

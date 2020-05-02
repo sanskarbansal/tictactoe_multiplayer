@@ -128,7 +128,11 @@ module.exports = function (server) {
         });
 
         socket.on('chal', (data) => {
-            moveChal(rName, playerName, data.cellNumber);
+            if(socketConnections[rName].playerOne != null && socketConnections[rName].playerTwo != null){
+                moveChal(rName, playerName, data.cellNumber);
+            }else{
+                socket.emit('notready', "Let user two also come!"); 
+            }
         });
         socket.on('disconnect', () => {
             if (rName != null) {
