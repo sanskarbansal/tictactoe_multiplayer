@@ -27,6 +27,6 @@ $('.cell').on('click', function (e) {
         var cellNumber = $(this).prop('id');
         socket.emit('chal', { playerName, cellNumber });
     } else {
-        alert('This is not your turn');
+        popUp('This is not your turn');
     }
 }); 

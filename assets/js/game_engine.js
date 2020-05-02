@@ -3,13 +3,27 @@ let playerName, roomName, turn, playerReady = false;
 function boardConfig(board) {
 
 }
+function popUp(content){
+    var div = document.createElement('div'); 
+    div.classList.add('popup'); 
+    var newContent = document.createTextNode(content);
+    div.append(newContent); 
+    $('body').append(div);
+    $('#gameBoard').addClass('blur')
+    $('.popup').fadeOut( 1500,  ()=>{
+        $('#gameBoard').removeClass('blur'); 
+        $('.popup').remove(); 
+    }); 
+}
 
 function createRoom(name) {
     socket.emit('createRoom', name);
 }
 
 
-
+socket.on('err', (d)=>{
+   popUp(d);  
+}); 
 
 function joinRoom(name, rName) {
     var rName = 'room_' + rName;
@@ -27,7 +41,7 @@ socket.on('roomJoined', (data) => {
         playerReady = true; 
         $('#pn2').text(playerTwo.toUpperCase());
     }
-    $('#turn').text(turn);
+    $('#turn').text(turn.toUpperCase());
     $('#roomName').text(rName[rName.length - 1]);
     $('#gameBoard').removeClass('d-none');
     $('#create-container').addClass('d-none');
@@ -42,18 +56,18 @@ socket.on('chal', (data) => {
 });
 socket.on('winner', (data) => {
     console.log("this was called"); 
-    alert(data + " Won the Match");
+    popUp(data + " Won the Match"); 
     resetBoard(); 
     // setTimeout(resetBoard, 1000);
 });
 socket.on('draw', (data) => {
-    alert(data); 
+    popUp(data); 
     resetBoard(); 
     // setTimeout(resetBoard, 1000);
 
 });
 
-socket.on('notready', d=>alert(d) ); 
+socket.on('notready', d=>popUp(d) ); 
 function setupBoard(board) {
     for (let i = 0; i < board.length; i++) {
         if (board[i] != null) {

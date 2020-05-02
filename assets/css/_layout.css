@@ -63,22 +63,46 @@
 
 #gameBoard{
     display: grid; 
-    height: 700px; 
-    width: 500px; 
+    max-height: 640px; 
+    max-width: 420px ; 
+    height: 95vh; 
+    width: 90vw; 
     grid-template-rows: 200px repeat(3, 1fr);
     grid-template-columns: repeat(3, 1fr);
     margin: 0 auto; 
+    /* row-gap: 10px 0 0 0; */
 }
 .cell{
-    border: 1px solid black; 
+    border: 1px solid white;
+    background-color: #663399;  
+    color: white; 
+    font-family: monospace;
 }
+
 #player-details-container{
+    margin-bottom: 1em; 
     grid-column: 1/4;
+    padding: 1em;
+    font-family: monospace;
+    background-color: rebeccapurple;
+    color: white;
+}
+#player-details-container p{
+    font-weight: bolder;
+    font-size: 1.2em;
+    transition: all 1s;
 }
 #player-details-container h1{
     text-align: center;
 }
-
+#turn{
+    color: #81ff81;
+    background-color: darkslateblue;
+    padding: 0.1em 0.5em;
+    border-radius: 4px;
+    font-weight: bolder;
+    font-size: 1.3em;
+}
 .cell{
     cursor: pointer;
     display: flex;
@@ -86,7 +110,26 @@
     align-items: center;
     font-size: 7em;
 }
+.blur{
+    filter: blur(5px); 
 }
+.popup{
+    transition: all 1s;
+    position: fixed;
+    top: 1em; 
+    left: 0;
+    border-radius: 0 4px 4px 0;
+    padding: 0.2em 1em;  
+    font-family: monospace;
+    z-index: 1000;
+    filter: none !important;
+    background-color: rgb(251, 60, 60);
+    color: white; 
+    font-size: 2em;
+    /* vertical-align: middle; */
+}
+
 .cell:hover{
+    color: rgb(12, 248, 87); 
     background-color: rgba(0, 0, 0, 0.231);
 }

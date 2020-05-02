@@ -25,7 +25,7 @@ function joinRoom(playerName, rName, socket) {
 
         io.in(rName).emit('roomJoined', { rName, playerOne, playerTwo, turn });
     } else {
-        socket.emit('error', 'Error while joining the room.');
+        socket.emit('err', 'Error while joining the room.');
     }
 }
 
