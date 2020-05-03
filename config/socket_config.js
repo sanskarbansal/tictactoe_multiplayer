@@ -113,7 +113,6 @@ module.exports = function (server) {
 
     io.on('connection', (socket) => {
 
-
         var rName = null, playerName = null, sid = socket.id;
         socket.on('createRoom', (data) => {
             playerName = data;
@@ -136,6 +135,18 @@ module.exports = function (server) {
                 socket.emit('notready', "Let user two also come!"); 
             }
         });
+
+        socket.on('message', (message)=>{
+            if(rName != null && message.trim(' ') != '' && playerName != null){
+                if(socketConnections[rName].playerTwo != null){
+                    io.in(rName).emit('message', {message, playerName}); 
+                }else{
+                    socket.emit('err', "Let the user two also join the room!"); 
+                }
+            }
+        }); 
+
+
         socket.on('disconnect', () => {
             if (rName != null) {
                 removeFromRoom(rName, playerName, sid);

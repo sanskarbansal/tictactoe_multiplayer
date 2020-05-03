@@ -2,21 +2,29 @@
     <h1>Join Room</h1>
     <form method="post" action="/" class="form" id="joinRoomForm">
         <label for="name" class="form-label">Enter Name</label>
-        <input type="text" name="name" id="name">
+        <input type="text" name="name" id="name" />
         <label for="room" class="form-label">Enter Room</label>
-        <input type="number" name="roomId" id="room">
+        <input type="number" name="roomId" id="room" />
         <button type="submit">J01N R00M</button>
     </form>
-    <p>Dont have an R00M?&emsp14;<button class="btn" id="create">CR3AT3 R00M H3R3</button></p>
+    <p>
+        Dont have an R00M?&emsp14;<button class="btn" id="create">
+            CR3AT3 R00M H3R3
+        </button>
+    </p>
 </div>
 <div id="create-container">
-    <h1>Create Room </h1>
+    <h1>Create Room</h1>
     <form action="/" class="form" id="createRoomForm">
         <label for="cname" class="form-label">Enter Name</label>
-        <input type="text" name="name" id="cname">
+        <input type="text" name="name" id="cname" />
         <button type="submit">CR3AT3 R00M</button>
     </form>
-    <p>Already have an R00M?&emsp14;<button class="btn" id="join-here">J01N R00M H3R3</button></p>
+    <p>
+        Already have an R00M?&emsp14;<button class="btn" id="join-here">
+            J01N R00M H3R3
+        </button>
+    </p>
 </div>
 
 <div id="gameBoard" class="d-none">
@@ -24,7 +32,7 @@
         <h1>Room Number: <span id="roomName"></span></h1>
         <p>Player One: <span id="pn1"></span></p>
         <p>Player Two: <span id="pn2"></span></p>
-        <p>Turn:  <span id="turn"></span> </p>
+        <p>Turn: <span id="turn"></span></p>
     </div>
     <div id="1" class="cell"></div>
     <div id="2" class="cell"></div>
@@ -35,8 +43,21 @@
     <div id="7" class="cell"></div>
     <div id="8" class="cell"></div>
     <div id="9" class="cell"></div>
+    <div id="chat-box">
+        <div id="messages"></div>
+        <form action="/" id="messageForm">
+            <input type="text" name="message" id="msg" autocomplete="off"/>
+            <button type="submit"><i class="fa fa-arrow-right"></i></button>
+        </form>
+    </div>
 </div>
-
 
 <script src="/js/game_engine.js"></script>
 <script src="/js/index.js"></script>
+<script>
+    $("#messageForm").on("submit", (e) => {
+        e.preventDefault();
+        var val = $("#msg").val().trim("");
+        sendMessage(val);
+    });
+</script>

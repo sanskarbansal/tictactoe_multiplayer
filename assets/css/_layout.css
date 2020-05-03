@@ -68,7 +68,7 @@
     max-width: 420px ; 
     height: 95vh; 
     width: 90vw; 
-    grid-template-rows: 200px repeat(3, 1fr);
+    grid-template-rows: 200px repeat(3, 1fr) 200px;
     grid-template-columns: repeat(3, 1fr);
     margin: 0 auto; 
     /* row-gap: 10px 0 0 0; */
@@ -79,6 +79,73 @@
     color: white; 
     font-family: monospace;
 }
+
+/*** Chat Box Styling ****/
+#chat-box{
+    grid-column: 1/4;
+    margin-top: 2em; 
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+}
+#messageForm{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    justify-content: center;
+    align-items: flex-end;
+    font-size: 1.2em;
+    font-family: monospace;
+}
+#msg{
+    width: 100%;
+    font-size: 1em;
+    padding: 0;
+    margin: 0;
+}
+#chat-box button{
+    color: white; 
+    background-color: darkgreen;
+    border: none; 
+    font-size: 1.1em;
+}
+
+.message{
+    display: flex;
+    justify-content: space-between;
+}
+
+.sender{
+    text-transform: capitalize;
+    color: lightgreen;
+    font-weight: bolder;
+}
+.self{
+    background-color: #03a9f4;
+}
+.self .sender{
+    order: 2; 
+}
+.message p{
+    margin: 0;
+    padding: 0.2em 1em ;
+    font-family: monospace;
+}
+#messages{
+    height: 100%;
+    background-color: black;
+    color: white;
+    overflow-y: scroll;
+}
+#messages::-webkit-scrollbar{
+    width: 0.2em; 
+    background-color: black; 
+}
+#messages::-webkit-scrollbar-thumb{
+    background-color: lightgrey; 
+}
+
+
 
 #player-details-container{
     margin-bottom: 1em; 
