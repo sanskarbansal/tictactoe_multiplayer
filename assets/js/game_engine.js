@@ -118,4 +118,5 @@ function renderMessage(data) {
             `;
     }
     $('#messages').html($('#messages').html()+html);
+    document.getElementById('messages').scrollBy(0, 50); 
 }
